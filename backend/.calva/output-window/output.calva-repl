@@ -1,0 +1,922 @@
+; This is the Calva REPL Window.
+; It's just a file, really, with some special treatment from Calva.
+; Use it as a REPL input prompt if you like. (When the REPL is connected.)
+; TIPS: The keyboard shortcut `ctrl+alt+o r` shows and focuses this window
+; Please see https://calva.io/repl-window/ for more info.
+; Happy coding! ♥️
+
+; TIPS: As with any Clojure file when the REPL is connected:
+; - `alt+enter` evaluates the current top level form.
+; - `ctrl+enter` evaluates the current form.
+; Special for this file:
+; - `alt+up` and `alt+down` traverse up and down the REPL command history
+;    when the cursor is after the last contents at the prompt
+; 
+; See also the Calva Inspector: https://calva.io/inspector/
+
+PLEASE NOTE
+We will update the default location of this file.
+The new default location will be
+  "<projectRootPath>/.calva/repl.calva-repl"
+For now the legacy path is used by default.
+To give yourself a smooth transition, you can opt in
+to the change, by configuring this setting as false:
+  "calva.useLegacyReplWindowPath"
+and then add "**/.calva/repl.calva-repl" to your ".gitignore" file.
+
+
+This file is configured as the output destination for all REPL output.
+You can configure this with the setting:
+  "calva.outputDestinations"
+
+
+; Connecting ...
+; Reading port file: file:///home/takudzwatembedza/sandwich-vote/.nrepl-port ...
+; Using host:port localhost:40831 ...
+; Hooking up nREPL sessions ...
+; Connected session: clj
+; Evaluating code from settings: 'calva.autoEvaluateCode.onConnect.clj'
+nil
+clj꞉user꞉> 
+"Please see https://calva.io/output/#about-stdout-in-the-repl-window
+about why stdout printed to this file is prepended with `;` to be line comments."
+clj꞉user꞉> 
+; Syntax error compiling at (src/sandwich_vote/server.clj:32:3).
+; Unable to resolve symbol: start in this context
+clj꞉sandwich-vote.server꞉> 
+; Syntax error compiling at (src/sandwich_vote/server.clj:17:9).
+; Unable to resolve symbol: server in this context
+clj꞉sandwich-vote.server꞉> 
+#'sandwich-vote.server/server
+clj꞉sandwich-vote.server꞉> 
+#'sandwich-vote.server/handler
+clj꞉sandwich-vote.server꞉> 
+#'sandwich-vote.server/mw
+clj꞉sandwich-vote.server꞉> 
+#'sandwich-vote.server/start
+clj꞉sandwich-vote.server꞉> 
+#function[clojure.lang.AFunction/1]
+clj꞉sandwich-vote.server꞉> 
+; Syntax error compiling at (src/sandwich_vote/server.clj:33:3).
+; Unable to resolve symbol: stop in this context
+clj꞉sandwich-vote.server꞉> 
+#'sandwich-vote.server/stop
+clj꞉sandwich-vote.server꞉> 
+nil
+clj꞉sandwich-vote.server꞉> 
+#function[clojure.lang.AFunction/1]
+clj꞉sandwich-vote.server꞉> 
+#function[clojure.lang.AFunction/1]
+clj꞉sandwich-vote.server꞉> 
+nil
+clj꞉sandwich-vote.server꞉> 
+#'sandwich-vote.server/handler
+clj꞉sandwich-vote.server꞉> 
+#'sandwich-vote.server/mw
+clj꞉sandwich-vote.server꞉> 
+; Syntax error compiling at (src/sandwich_vote/server.clj:34:3).
+; Unable to resolve symbol: restart in this context
+clj꞉sandwich-vote.server꞉> 
+#'sandwich-vote.server/start
+clj꞉sandwich-vote.server꞉> 
+#'sandwich-vote.server/stop
+clj꞉sandwich-vote.server꞉> 
+#'sandwich-vote.server/restart
+clj꞉sandwich-vote.server꞉> 
+#function[clojure.lang.AFunction/1]
+clj꞉sandwich-vote.server꞉> 
+clj꞉dev꞉> 
+; Unloading dev
+; Unloading sandwich-vote.server
+; Loading sandwich-vote.server
+; Loading dev
+; sup again
+{:unloaded [dev sandwich-vote.server], :loaded [sandwich-vote.server dev]}
+clj꞉dev꞉> 
+#function[clojure.lang.AFunction/1]
+clj꞉sandwich-vote.server꞉> 
+clj꞉dev꞉> 
+; Unloading sandwich-vote.core
+; Unloading dev
+; sup
+; Unloading sandwich-vote.server
+; Loading sandwich-vote.server
+; Loading dev
+; sup again
+; Loading sandwich-vote.core
+{:unloaded [sandwich-vote.core dev sandwich-vote.server], :loaded [sandwich-vote.server dev sandwich-vote.core]}
+clj꞉dev꞉> 
+; Unloading sandwich-vote.core
+; Unloading dev
+; sup
+; Unloading sandwich-vote.server
+; Loading sandwich-vote.server
+; Loading dev
+; sup again
+; Loading sandwich-vote.core
+{:unloaded [sandwich-vote.core dev sandwich-vote.server], :loaded [sandwich-vote.server dev sandwich-vote.core]}
+clj꞉dev꞉> 
+; Nothing to unload
+; Nothing to reload
+{:unloaded [], :loaded []}
+clj꞉dev꞉> 
+; Unloading sandwich-vote.core
+; Unloading dev
+; sup
+; Unloading sandwich-vote.server
+; Loading sandwich-vote.server
+; Loading dev
+; sup again
+; Loading sandwich-vote.core
+{:unloaded [sandwich-vote.core dev sandwich-vote.server], :loaded [sandwich-vote.server dev sandwich-vote.core]}
+clj꞉dev꞉> 
+; Unloading sandwich-vote.core
+; Unloading dev
+; sup
+; Unloading sandwich-vote.server
+; Loading sandwich-vote.server
+; Loading dev
+; sup again
+; Loading sandwich-vote.core
+{:unloaded [sandwich-vote.core dev sandwich-vote.server], :loaded [sandwich-vote.server dev sandwich-vote.core]}
+clj꞉dev꞉> 
+#'sandwich-vote.server/mw
+clj꞉sandwich-vote.server꞉> 
+#'sandwich-vote.server/start
+clj꞉sandwich-vote.server꞉> 
+clj꞉dev꞉> 
+; Nothing to unload
+; Nothing to reload
+{:unloaded [], :loaded []}
+clj꞉dev꞉> 
+; Unloading sandwich-vote.core
+; Unloading dev
+; sup
+; Unloading sandwich-vote.server
+; Loading sandwich-vote.server
+;   failed to load sandwich-vote.server #error {
+;  :cause No such namespace: json
+;  :via
+;  [{:type clojure.lang.Compiler$CompilerException
+;    :message Syntax error compiling at (sandwich_vote/server.clj:12:13).
+;    :data #:clojure.error{:phase :compile-syntax-check, :line 12, :column 13, :source sandwich_vote/server.clj}
+;    :at [clojure.lang.Compiler analyze Compiler.java 6825]}
+;   {:type java.lang.RuntimeException
+;    :message No such namespace: json
+;    :at [clojure.lang.Util runtimeException Util.java 221]}]
+;  :trace
+;  [[clojure.lang.Util runtimeException Util.java 221]
+;   [clojure.lang.Compiler resolveIn Compiler.java 7401]
+;   [clojure.lang.Compiler resolve Compiler.java 7375]
+;   [clojure.lang.Compiler analyzeSymbol Compiler.java 7336]
+;   [clojure.lang.Compiler analyze Compiler.java 6785]
+;   [clojure.lang.Compiler analyze Compiler.java 6762]
+;   [clojure.lang.Compiler$InvokeExpr parse Compiler.java 3832]
+;   [clojure.lang.Compiler analyzeSeq Compiler.java 7126]
+;   [clojure.lang.Compiler analyze Compiler.java 6806]
+;   [clojure.lang.Compiler analyze Compiler.java 6762]
+;   [clojure.lang.Compiler$InvokeExpr parse Compiler.java 3832]
+;   [clojure.lang.Compiler analyzeSeq Compiler.java 7126]
+;   [clojure.lang.Compiler analyze Compiler.java 6806]
+;   [clojure.lang.Compiler analyze Compiler.java 6762]
+;   [clojure.lang.Compiler$InvokeExpr parse Compiler.java 3900]
+;   [clojure.lang.Compiler analyzeSeq Compiler.java 7126]
+;   [clojure.lang.Compiler analyze Compiler.java 6806]
+;   [clojure.lang.Compiler analyze Compiler.java 6762]
+;   [clojure.lang.Compiler$BodyExpr$Parser parse Compiler.java 6135]
+;   [clojure.lang.Compiler$FnMethod parse Compiler.java 5479]
+;   [clojure.lang.Compiler$FnExpr parse Compiler.java 4041]
+;   [clojure.lang.Compiler analyzeSeq Compiler.java 7122]
+;   [clojure.lang.Compiler analyze Compiler.java 6806]
+;   [clojure.lang.Compiler analyzeSeq Compiler.java 7112]
+;   [clojure.lang.Compiler analyze Compiler.java 6806]
+;   [clojure.lang.Compiler access$300 Compiler.java 38]
+;   [clojure.lang.Compiler$DefExpr$Parser parse Compiler.java 596]
+;   [clojure.lang.Compiler analyzeSeq Compiler.java 7124]
+;   [clojure.lang.Compiler analyze Compiler.java 6806]
+;   [clojure.lang.Compiler analyze Compiler.java 6762]
+;   [clojure.lang.Compiler eval Compiler.java 7198]
+;   [clojure.lang.Compiler load Compiler.java 7653]
+;   [clj_reload.util$ns_load_file invokeStatic util.clj 124]
+;   [clj_reload.util$ns_load_file invoke util.clj 121]
+;   [clj_reload.keep$ns_load_patched invokeStatic keep.clj 180]
+;   [clj_reload.keep$ns_load_patched invoke keep.clj 177]
+;   [clj_reload.core$ns_load invokeStatic core.clj 270]
+;   [clj_reload.core$ns_load invoke core.clj 265]
+;   [clj_reload.core$reload$fn__781 invoke core.clj 336]
+;   [clojure.core$some invokeStatic core.clj 2718]
+;   [clojure.core$some invoke core.clj 2709]
+;   [clj_reload.core$reload invokeStatic core.clj 336]
+;   [clj_reload.core$reload invoke core.clj 304]
+;   [clj_reload.core$reload invokeStatic core.clj 326]
+;   [clj_reload.core$reload invoke core.clj 304]
+;   [user$reload_namespaces invokeStatic user.clj 4]
+;   [user$reload_namespaces invoke user.clj 4]
+;   [dev$eval13058 invokeStatic NO_SOURCE_FILE 152]
+;   [dev$eval13058 invoke NO_SOURCE_FILE 152]
+;   [clojure.lang.Compiler eval Compiler.java 7194]
+;   [nrepl.middleware.interruptible_eval$evaluator$run__2131$fn__2142 invoke interruptible_eval.clj 106]
+;   [nrepl.middleware.interruptible_eval$evaluator$run__2131 invoke interruptible_eval.clj 101]
+;   [nrepl.middleware.session$session_exec$session_loop__2210 invoke session.clj 229]
+;   [nrepl.SessionThread run SessionThread.java 21]]}
+; Execution error at clj-reload.util/ns-load-file (util.clj:124).
+; No such namespace: json
+clj꞉dev꞉> 
+
+clj꞉dev꞉> 
+
+clj꞉dev꞉> 
+; nREPL Connection was closed
+; Connecting using "deps.edn" project type.
+; You can make Calva auto-select this.
+;   - See https://calva.io/connect-sequences/
+; 
+
+; Connecting ...
+; Reading port file: file:///home/takudzwatembedza/sandwich-vote/.nrepl-port ...
+; Using host:port localhost:42245 ...
+; Hooking up nREPL sessions ...
+; Connected session: clj
+; Evaluating code from settings: 'calva.autoEvaluateCode.onConnect.clj'
+nil
+clj꞉user꞉> 
+clj꞉dev꞉> 
+
+clj꞉dev꞉> 
+
+clj꞉sandwich-vote.server꞉> 
+
+clj꞉sandwich-vote.server꞉> 
+
+clj꞉sandwich-vote.server꞉> 
+
+clj꞉sandwich-vote.server꞉> 
+
+clj꞉sandwich-vote.server꞉> 
+; nREPL Connection was closed
+; Connecting using "deps.edn" project type.
+; You can make Calva auto-select this.
+;   - See https://calva.io/connect-sequences/
+; 
+
+; Connecting ...
+; Reading port file: file:///home/takudzwatembedza/sandwich-vote/.nrepl-port ...
+; Using host:port localhost:35053 ...
+; Hooking up nREPL sessions ...
+; Connected session: clj
+; Evaluating code from settings: 'calva.autoEvaluateCode.onConnect.clj'
+nil
+clj꞉user꞉> 
+nil
+clj꞉sandwich-vote.server꞉> 
+nil
+clj꞉sandwich-vote.server꞉> 
+; Syntax error compiling at (src/sandwich_vote/server.clj:32:3).
+; Unable to resolve symbol: start in this context
+clj꞉sandwich-vote.server꞉> 
+clj꞉dev꞉> 
+
+clj꞉dev꞉> 
+nil
+clj꞉sandwich-vote.server꞉> 
+; Syntax error compiling at (src/sandwich_vote/server.clj:17:9).
+; Unable to resolve symbol: server in this context
+clj꞉sandwich-vote.server꞉> 
+; Syntax error compiling at (src/sandwich_vote/server.clj:13:3).
+; Unable to resolve symbol: handler in this context
+clj꞉sandwich-vote.server꞉> 
+#'sandwich-vote.server/handler
+clj꞉sandwich-vote.server꞉> 
+#'sandwich-vote.server/handler
+clj꞉sandwich-vote.server꞉> 
+#'sandwich-vote.server/mw
+clj꞉sandwich-vote.server꞉> 
+; Syntax error compiling at (src/sandwich_vote/server.clj:17:9).
+; Unable to resolve symbol: server in this context
+clj꞉sandwich-vote.server꞉> 
+; Syntax error compiling at (src/sandwich_vote/server.clj:22:13).
+; Unable to resolve symbol: server in this context
+clj꞉sandwich-vote.server꞉> 
+; Syntax error compiling at (src/sandwich_vote/server.clj:22:13).
+; Unable to resolve symbol: server in this context
+clj꞉sandwich-vote.server꞉> 
+; Syntax error compiling at (src/sandwich_vote/server.clj:17:9).
+; Unable to resolve symbol: server in this context
+clj꞉sandwich-vote.server꞉> 
+#'sandwich-vote.server/server
+clj꞉sandwich-vote.server꞉> 
+; nREPL Connection was closed
+; Connecting using "deps.edn" project type.
+; You can make Calva auto-select this.
+;   - See https://calva.io/connect-sequences/
+; 
+
+; Connecting ...
+; Reading port file: file:///home/takudzwatembedza/sandwich-vote/.nrepl-port ...
+; Using host:port localhost:39511 ...
+; Hooking up nREPL sessions ...
+; Connected session: clj
+; Evaluating code from settings: 'calva.autoEvaluateCode.onConnect.clj'
+nil
+clj꞉user꞉> 
+nil
+clj꞉dev꞉> 
+#'dev/before-ns-unload
+clj꞉dev꞉> 
+#'dev/after-ns-reload
+clj꞉dev꞉> 
+#function[clojure.lang.AFunction/1]
+clj꞉dev꞉> 
+#'sandwich-vote.server/test-str
+clj꞉sandwich-vote.server꞉> 
+; Syntax error compiling at (src/sandwich_vote/server.clj:45:9).
+; No such namespace: json
+clj꞉sandwich-vote.server꞉> 
+clj꞉dev꞉> 
+; Unloading dev
+; sup
+; Unloading sandwich-vote.server
+; Loading sandwich-vote.server
+; Loading dev
+; sup again
+{:unloaded [dev sandwich-vote.server], :loaded [sandwich-vote.server dev]}
+clj꞉dev꞉> 
+#'sandwich-vote.server/pm
+clj꞉sandwich-vote.server꞉> 
+; Execution error (ClassCastException) at sandwich-vote.server/eval13130 (REPL:0).
+; class clojure.lang.PersistentArrayMap cannot be cast to class java.util.concurrent.Future (clojure.lang.PersistentArrayMap is in unnamed module of loader 'app'; java.util.concurrent.Future is in module java.base of loader 'bootstrap')
+clj꞉sandwich-vote.server꞉> 
+"{\"name\":\"taku\"}"
+clj꞉sandwich-vote.server꞉> 
+; Execution error (ClassCastException) at sandwich-vote.server/eval13132 (REPL:0).
+; class clojure.lang.PersistentArrayMap cannot be cast to class java.util.concurrent.Future (clojure.lang.PersistentArrayMap is in unnamed module of loader 'app'; java.util.concurrent.Future is in module java.base of loader 'bootstrap')
+clj꞉sandwich-vote.server꞉> 
+clj꞉dev꞉> 
+; Unloading dev
+; sup
+; Unloading sandwich-vote.server
+; Loading sandwich-vote.server
+;   failed to load sandwich-vote.server #error {
+;  :cause class clojure.lang.PersistentArrayMap cannot be cast to class java.util.concurrent.Future (clojure.lang.PersistentArrayMap is in unnamed module of loader 'app'; java.util.concurrent.Future is in module java.base of loader 'bootstrap')
+;  :via
+;  [{:type clojure.lang.Compiler$CompilerException
+;    :message Syntax error macroexpanding at (sandwich_vote/server.clj:46:1).
+;    :data #:clojure.error{:phase :execution, :line 46, :column 1, :source sandwich_vote/server.clj}
+;    :at [clojure.lang.Compiler load Compiler.java 7665]}
+;   {:type java.lang.ClassCastException
+;    :message class clojure.lang.PersistentArrayMap cannot be cast to class java.util.concurrent.Future (clojure.lang.PersistentArrayMap is in unnamed module of loader 'app'; java.util.concurrent.Future is in module java.base of loader 'bootstrap')
+;    :at [clojure.core$deref_future invokeStatic core.clj 2315]}]
+;  :trace
+;  [[clojure.core$deref_future invokeStatic core.clj 2315]
+;   [clojure.core$deref invokeStatic core.clj 2337]
+;   [clojure.core$deref invoke core.clj 2323]
+;   [sandwich_vote.server$eval13153 invokeStatic server.clj 354]
+;   [sandwich_vote.server$eval13153 invoke server.clj 354]
+;   [clojure.lang.Compiler eval Compiler.java 7194]
+;   [clojure.lang.Compiler load Compiler.java 7653]
+;   [clj_reload.util$ns_load_file invokeStatic util.clj 124]
+;   [clj_reload.util$ns_load_file invoke util.clj 121]
+;   [clj_reload.keep$ns_load_patched invokeStatic keep.clj 180]
+;   [clj_reload.keep$ns_load_patched invoke keep.clj 177]
+;   [clj_reload.core$ns_load invokeStatic core.clj 270]
+;   [clj_reload.core$ns_load invoke core.clj 265]
+;   [clj_reload.core$reload$fn__781 invoke core.clj 336]
+;   [clojure.core$some invokeStatic core.clj 2718]
+;   [clojure.core$some invoke core.clj 2709]
+;   [clj_reload.core$reload invokeStatic core.clj 336]
+;   [clj_reload.core$reload invoke core.clj 304]
+;   [clj_reload.core$reload invokeStatic core.clj 326]
+;   [clj_reload.core$reload invoke core.clj 304]
+;   [user$reload_namespaces invokeStatic user.clj 4]
+;   [user$reload_namespaces invoke user.clj 4]
+;   [dev$eval13134 invokeStatic NO_SOURCE_FILE 354]
+;   [dev$eval13134 invoke NO_SOURCE_FILE 354]
+;   [clojure.lang.Compiler eval Compiler.java 7194]
+;   [nrepl.middleware.interruptible_eval$evaluator$run__2131$fn__2142 invoke interruptible_eval.clj 106]
+;   [nrepl.middleware.interruptible_eval$evaluator$run__2131 invoke interruptible_eval.clj 101]
+;   [nrepl.middleware.session$session_exec$session_loop__2210 invoke session.clj 229]
+;   [nrepl.SessionThread run SessionThread.java 21]]}
+; Execution error (ClassCastException) at sandwich-vote.server/eval13153 (server.clj:354).
+; class clojure.lang.PersistentArrayMap cannot be cast to class java.util.concurrent.Future (clojure.lang.PersistentArrayMap is in unnamed module of loader 'app'; java.util.concurrent.Future is in module java.base of loader 'bootstrap')
+clj꞉dev꞉> 
+
+clj꞉dev꞉> 
+; nREPL Connection was closed
+; Connecting using "deps.edn" project type.
+; You can make Calva auto-select this.
+;   - See https://calva.io/connect-sequences/
+; 
+
+; Connecting ...
+; Reading port file: file:///home/takudzwatembedza/sandwich-vote/.nrepl-port ...
+; Using host:port localhost:35179 ...
+; Hooking up nREPL sessions ...
+; Connected session: clj
+; Evaluating code from settings: 'calva.autoEvaluateCode.onConnect.clj'
+nil
+clj꞉user꞉> 
+clj꞉dev꞉> 
+
+clj꞉dev꞉> 
+
+clj꞉dev꞉> 
+
+clj꞉dev꞉> 
+
+clj꞉dev꞉> 
+clj꞉sandwich-vote.server꞉> 
+
+clj꞉sandwich-vote.server꞉> 
+; nREPL Connection was closed
+; Connecting using "deps.edn" project type.
+; You can make Calva auto-select this.
+;   - See https://calva.io/connect-sequences/
+; 
+
+; Connecting ...
+; Reading port file: file:///home/takudzwatembedza/sandwich-vote/.nrepl-port ...
+; No nrepl port file found.
+; Connecting using "deps.edn" project type.
+; You can make Calva auto-select this.
+;   - See https://calva.io/connect-sequences/
+; 
+
+; Connecting ...
+; Reading port file: file:///home/takudzwatembedza/sandwich-vote/.nrepl-port ...
+; Using host:port localhost:34655 ...
+; Hooking up nREPL sessions ...
+; Connected session: clj
+; Evaluating code from settings: 'calva.autoEvaluateCode.onConnect.clj'
+nil
+clj꞉user꞉> 
+; Syntax error compiling at (dev/dev.clj:13:3).
+; No such var: server/start
+clj꞉dev꞉> 
+#'sandwich-vote.server/server
+clj꞉sandwich-vote.server꞉> 
+nil
+clj꞉sandwich-vote.server꞉> 
+; Syntax error compiling at (dev/dev.clj:13:3).
+; No such var: server/start
+clj꞉dev꞉> 
+; Nothing to unload
+; Nothing to reload
+{:unloaded [], :loaded []}
+clj꞉dev꞉> 
+; Syntax error compiling at (src/sandwich_vote/server.clj:32:3).
+; Unable to resolve symbol: start in this context
+clj꞉sandwich-vote.server꞉> 
+nil
+clj꞉sandwich-vote.server꞉> 
+#'sandwich-vote.server/handler
+clj꞉sandwich-vote.server꞉> 
+#'sandwich-vote.server/handler
+clj꞉sandwich-vote.server꞉> 
+#'sandwich-vote.server/mw
+clj꞉sandwich-vote.server꞉> 
+true
+clj꞉sandwich-vote.server꞉> 
+true
+clj꞉sandwich-vote.server꞉> 
+; Syntax error compiling at (src/sandwich_vote/server.clj:28:3).
+; Unable to resolve symbol: stop in this context
+clj꞉sandwich-vote.server꞉> 
+#'sandwich-vote.server/stop
+clj꞉sandwich-vote.server꞉> 
+; Syntax error compiling at (src/sandwich_vote/server.clj:29:3).
+; Unable to resolve symbol: start in this context
+clj꞉sandwich-vote.server꞉> 
+#'sandwich-vote.server/start
+clj꞉sandwich-vote.server꞉> 
+#function[clojure.lang.AFunction/1]
+clj꞉sandwich-vote.server꞉> 
+clj꞉dev꞉> 
+; Unloading dev
+; Unloading sandwich-vote.server
+; Loading sandwich-vote.server
+;   failed to load sandwich-vote.server #error {
+;  :cause class clojure.lang.PersistentArrayMap cannot be cast to class java.util.concurrent.Future (clojure.lang.PersistentArrayMap is in unnamed module of loader 'app'; java.util.concurrent.Future is in module java.base of loader 'bootstrap')
+;  :via
+;  [{:type clojure.lang.Compiler$CompilerException
+;    :message Syntax error macroexpanding at (sandwich_vote/server.clj:46:1).
+;    :data #:clojure.error{:phase :execution, :line 46, :column 1, :source sandwich_vote/server.clj}
+;    :at [clojure.lang.Compiler load Compiler.java 7665]}
+;   {:type java.lang.ClassCastException
+;    :message class clojure.lang.PersistentArrayMap cannot be cast to class java.util.concurrent.Future (clojure.lang.PersistentArrayMap is in unnamed module of loader 'app'; java.util.concurrent.Future is in module java.base of loader 'bootstrap')
+;    :at [clojure.core$deref_future invokeStatic core.clj 2315]}]
+;  :trace
+;  [[clojure.core$deref_future invokeStatic core.clj 2315]
+;   [clojure.core$deref invokeStatic core.clj 2337]
+;   [clojure.core$deref invoke core.clj 2323]
+;   [sandwich_vote.server$eval12072 invokeStatic server.clj 493]
+;   [sandwich_vote.server$eval12072 invoke server.clj 493]
+;   [clojure.lang.Compiler eval Compiler.java 7194]
+;   [clojure.lang.Compiler load Compiler.java 7653]
+;   [clj_reload.util$ns_load_file invokeStatic util.clj 124]
+;   [clj_reload.util$ns_load_file invoke util.clj 121]
+;   [clj_reload.keep$ns_load_patched invokeStatic keep.clj 180]
+;   [clj_reload.keep$ns_load_patched invoke keep.clj 177]
+;   [clj_reload.core$ns_load invokeStatic core.clj 270]
+;   [clj_reload.core$ns_load invoke core.clj 265]
+;   [clj_reload.core$reload$fn__781 invoke core.clj 336]
+;   [clojure.core$some invokeStatic core.clj 2718]
+;   [clojure.core$some invoke core.clj 2709]
+;   [clj_reload.core$reload invokeStatic core.clj 336]
+;   [clj_reload.core$reload invoke core.clj 304]
+;   [clj_reload.core$reload invokeStatic core.clj 326]
+;   [clj_reload.core$reload invoke core.clj 304]
+;   [user$reload_namespaces invokeStatic user.clj 4]
+;   [user$reload_namespaces invoke user.clj 4]
+;   [dev$eval12053 invokeStatic NO_SOURCE_FILE 493]
+;   [dev$eval12053 invoke NO_SOURCE_FILE 493]
+;   [clojure.lang.Compiler eval Compiler.java 7194]
+;   [nrepl.middleware.interruptible_eval$evaluator$run__2131$fn__2142 invoke interruptible_eval.clj 106]
+;   [nrepl.middleware.interruptible_eval$evaluator$run__2131 invoke interruptible_eval.clj 101]
+;   [nrepl.middleware.session$session_exec$session_loop__2210 invoke session.clj 229]
+;   [nrepl.SessionThread run SessionThread.java 21]]}
+; Execution error (ClassCastException) at sandwich-vote.server/eval12072 (server.clj:493).
+; class clojure.lang.PersistentArrayMap cannot be cast to class java.util.concurrent.Future (clojure.lang.PersistentArrayMap is in unnamed module of loader 'app'; java.util.concurrent.Future is in module java.base of loader 'bootstrap')
+clj꞉dev꞉> 
+
+clj꞉dev꞉> 
+
+clj꞉dev꞉> 
+nil
+clj꞉sandwich-vote.server꞉> 
+nil
+clj꞉sandwich-vote.server꞉> 
+clj꞉dev꞉> 
+
+clj꞉dev꞉> 
+nil
+clj꞉sandwich-vote.server꞉> 
+nil
+clj꞉sandwich-vote.server꞉> 
+#'sandwich-vote.server/handler
+clj꞉sandwich-vote.server꞉> 
+#'sandwich-vote.server/mw
+clj꞉sandwich-vote.server꞉> 
+#'sandwich-vote.server/start
+clj꞉sandwich-vote.server꞉> 
+#'sandwich-vote.server/stop
+clj꞉sandwich-vote.server꞉> 
+#'sandwich-vote.server/restart
+clj꞉sandwich-vote.server꞉> 
+; nREPL Connection was closed
+; Connecting using "deps.edn" project type.
+; You can make Calva auto-select this.
+;   - See https://calva.io/connect-sequences/
+; 
+
+; Connecting ...
+; Reading port file: file:///home/takudzwatembedza/sandwich-vote/.nrepl-port ...
+; Using host:port localhost:44613 ...
+; Hooking up nREPL sessions ...
+; Connected session: clj
+; Evaluating code from settings: 'calva.autoEvaluateCode.onConnect.clj'
+nil
+clj꞉user꞉> 
+nil
+clj꞉sandwich-vote.server꞉> 
+; Syntax error compiling at (dev/dev.clj:13:3).
+; No such var: server/start
+clj꞉dev꞉> 
+nil
+clj꞉dev꞉> 
+; Syntax error compiling at (dev/dev.clj:13:3).
+; No such var: server/start
+clj꞉dev꞉> 
+; Syntax error compiling at (src/sandwich_vote/server.clj:32:3).
+; Unable to resolve symbol: start in this context
+clj꞉sandwich-vote.server꞉> 
+nil
+clj꞉sandwich-vote.server꞉> 
+#'sandwich-vote.server/server
+clj꞉sandwich-vote.server꞉> 
+#'sandwich-vote.server/handler
+clj꞉sandwich-vote.server꞉> 
+#'sandwich-vote.server/mw
+clj꞉sandwich-vote.server꞉> 
+#'sandwich-vote.server/start
+clj꞉sandwich-vote.server꞉> 
+#'sandwich-vote.server/stop
+clj꞉sandwich-vote.server꞉> 
+#'sandwich-vote.server/restart
+clj꞉sandwich-vote.server꞉> 
+#function[clojure.lang.AFunction/1]
+clj꞉sandwich-vote.server꞉> 
+clj꞉dev꞉> 
+; Unloading dev
+; Unloading sandwich-vote.server
+; Loading sandwich-vote.server
+;   failed to load sandwich-vote.server #error {
+;  :cause class clojure.lang.PersistentArrayMap cannot be cast to class java.util.concurrent.Future (clojure.lang.PersistentArrayMap is in unnamed module of loader 'app'; java.util.concurrent.Future is in module java.base of loader 'bootstrap')
+;  :via
+;  [{:type clojure.lang.Compiler$CompilerException
+;    :message Syntax error macroexpanding at (sandwich_vote/server.clj:53:1).
+;    :data #:clojure.error{:phase :execution, :line 53, :column 1, :source sandwich_vote/server.clj}
+;    :at [clojure.lang.Compiler load Compiler.java 7665]}
+;   {:type java.lang.ClassCastException
+;    :message class clojure.lang.PersistentArrayMap cannot be cast to class java.util.concurrent.Future (clojure.lang.PersistentArrayMap is in unnamed module of loader 'app'; java.util.concurrent.Future is in module java.base of loader 'bootstrap')
+;    :at [clojure.core$deref_future invokeStatic core.clj 2315]}]
+;  :trace
+;  [[clojure.core$deref_future invokeStatic core.clj 2315]
+;   [clojure.core$deref invokeStatic core.clj 2337]
+;   [clojure.core$deref invoke core.clj 2323]
+;   [sandwich_vote.server$eval13147 invokeStatic server.clj 608]
+;   [sandwich_vote.server$eval13147 invoke server.clj 608]
+;   [clojure.lang.Compiler eval Compiler.java 7194]
+;   [clojure.lang.Compiler load Compiler.java 7653]
+;   [clj_reload.util$ns_load_file invokeStatic util.clj 124]
+;   [clj_reload.util$ns_load_file invoke util.clj 121]
+;   [clj_reload.keep$ns_load_patched invokeStatic keep.clj 180]
+;   [clj_reload.keep$ns_load_patched invoke keep.clj 177]
+;   [clj_reload.core$ns_load invokeStatic core.clj 270]
+;   [clj_reload.core$ns_load invoke core.clj 265]
+;   [clj_reload.core$reload$fn__781 invoke core.clj 336]
+;   [clojure.core$some invokeStatic core.clj 2718]
+;   [clojure.core$some invoke core.clj 2709]
+;   [clj_reload.core$reload invokeStatic core.clj 336]
+;   [clj_reload.core$reload invoke core.clj 304]
+;   [clj_reload.core$reload invokeStatic core.clj 326]
+;   [clj_reload.core$reload invoke core.clj 304]
+;   [user$reload_namespaces invokeStatic user.clj 4]
+;   [user$reload_namespaces invoke user.clj 4]
+;   [dev$eval13128 invokeStatic NO_SOURCE_FILE 608]
+;   [dev$eval13128 invoke NO_SOURCE_FILE 608]
+;   [clojure.lang.Compiler eval Compiler.java 7194]
+;   [nrepl.middleware.interruptible_eval$evaluator$run__2131$fn__2142 invoke interruptible_eval.clj 106]
+;   [nrepl.middleware.interruptible_eval$evaluator$run__2131 invoke interruptible_eval.clj 101]
+;   [nrepl.middleware.session$session_exec$session_loop__2210 invoke session.clj 229]
+;   [nrepl.SessionThread run SessionThread.java 21]]}
+; Execution error (ClassCastException) at sandwich-vote.server/eval13147 (server.clj:608).
+; class clojure.lang.PersistentArrayMap cannot be cast to class java.util.concurrent.Future (clojure.lang.PersistentArrayMap is in unnamed module of loader 'app'; java.util.concurrent.Future is in module java.base of loader 'bootstrap')
+clj꞉dev꞉> 
+
+clj꞉dev꞉> 
+
+clj꞉dev꞉> 
+; nREPL Connection was closed
+; Connecting using "deps.edn" project type.
+; You can make Calva auto-select this.
+;   - See https://calva.io/connect-sequences/
+; 
+
+; Connecting ...
+; Reading port file: file:///home/takudzwatembedza/sandwich-vote/.nrepl-port ...
+; Using host:port localhost:41723 ...
+; Hooking up nREPL sessions ...
+; Connected session: clj
+; Evaluating code from settings: 'calva.autoEvaluateCode.onConnect.clj'
+nil
+clj꞉user꞉> 
+nil
+clj꞉sandwich-vote.server꞉> 
+#'sandwich-vote.server/server
+clj꞉sandwich-vote.server꞉> 
+#'sandwich-vote.server/handler
+clj꞉sandwich-vote.server꞉> 
+#'sandwich-vote.server/mw
+clj꞉sandwich-vote.server꞉> 
+#'sandwich-vote.server/start
+clj꞉sandwich-vote.server꞉> 
+#'sandwich-vote.server/stop
+clj꞉sandwich-vote.server꞉> 
+#'sandwich-vote.server/restart
+clj꞉sandwich-vote.server꞉> 
+#function[clojure.lang.AFunction/1]
+clj꞉sandwich-vote.server꞉> 
+clj꞉dev꞉> 
+
+clj꞉dev꞉> 
+nil
+clj꞉sandwich-vote.server꞉> 
+nil
+clj꞉sandwich-vote.server꞉> 
+#'sandwich-vote.server/handler
+clj꞉sandwich-vote.server꞉> 
+#'sandwich-vote.server/mw
+clj꞉sandwich-vote.server꞉> 
+#'sandwich-vote.server/start
+clj꞉sandwich-vote.server꞉> 
+#'sandwich-vote.server/stop
+clj꞉sandwich-vote.server꞉> 
+#'sandwich-vote.server/restart
+clj꞉sandwich-vote.server꞉> 
+nil
+clj꞉sandwich-vote.server꞉> 
+clj꞉dev꞉> 
+
+clj꞉dev꞉> 
+
+clj꞉dev꞉> 
+
+clj꞉dev꞉> 
+; nREPL Connection was closed
+; Connecting using "deps.edn" project type.
+; You can make Calva auto-select this.
+;   - See https://calva.io/connect-sequences/
+; 
+
+; Connecting ...
+; Reading port file: file:///home/takudzwatembedza/sandwich-vote/.nrepl-port ...
+; Using host:port localhost:40137 ...
+; Hooking up nREPL sessions ...
+; Connected session: clj
+; Evaluating code from settings: 'calva.autoEvaluateCode.onConnect.clj'
+nil
+clj꞉user꞉> 
+nil
+clj꞉dev꞉> 
+#'dev/before-ns-unload
+clj꞉dev꞉> 
+; Syntax error compiling at (dev/dev.clj:10:3).
+; No such var: server/restart
+clj꞉dev꞉> 
+nil
+clj꞉sandwich-vote.server꞉> 
+#'sandwich-vote.server/server
+clj꞉sandwich-vote.server꞉> 
+#'sandwich-vote.server/handler
+clj꞉sandwich-vote.server꞉> 
+#'sandwich-vote.server/mw
+clj꞉sandwich-vote.server꞉> 
+#'sandwich-vote.server/start
+clj꞉sandwich-vote.server꞉> 
+#'sandwich-vote.server/stop
+clj꞉sandwich-vote.server꞉> 
+#'sandwich-vote.server/restart
+clj꞉sandwich-vote.server꞉> 
+clj꞉dev꞉> 
+; Unloading dev
+; sup
+; Unloading sandwich-vote.server
+; Loading sandwich-vote.server
+; Loading dev
+; sup again
+{:unloaded [dev sandwich-vote.server], :loaded [sandwich-vote.server dev]}
+clj꞉dev꞉> 
+; Unloading dev
+; sup
+; Unloading sandwich-vote.server
+; Loading sandwich-vote.server
+;   failed to load sandwich-vote.server #error {
+;  :cause No such var: json/-write-str
+;  :via
+;  [{:type clojure.lang.Compiler$CompilerException
+;    :message Syntax error compiling at (sandwich_vote/server.clj:9:23).
+;    :data #:clojure.error{:phase :compile-syntax-check, :line 9, :column 23, :source sandwich_vote/server.clj}
+;    :at [clojure.lang.Compiler analyze Compiler.java 6825]}
+;   {:type java.lang.RuntimeException
+;    :message No such var: json/-write-str
+;    :at [clojure.lang.Util runtimeException Util.java 221]}]
+;  :trace
+;  [[clojure.lang.Util runtimeException Util.java 221]
+;   [clojure.lang.Compiler resolveIn Compiler.java 7405]
+;   [clojure.lang.Compiler resolve Compiler.java 7375]
+;   [clojure.lang.Compiler analyzeSymbol Compiler.java 7336]
+;   [clojure.lang.Compiler analyze Compiler.java 6785]
+;   [clojure.lang.Compiler analyze Compiler.java 6762]
+;   [clojure.lang.Compiler$InvokeExpr parse Compiler.java 3832]
+;   [clojure.lang.Compiler analyzeSeq Compiler.java 7126]
+;   [clojure.lang.Compiler analyze Compiler.java 6806]
+;   [clojure.lang.Compiler analyze Compiler.java 6762]
+;   [clojure.lang.Compiler$InvokeExpr parse Compiler.java 3900]
+;   [clojure.lang.Compiler analyzeSeq Compiler.java 7126]
+;   [clojure.lang.Compiler analyze Compiler.java 6806]
+;   [clojure.lang.Compiler analyzeSeq Compiler.java 7112]
+;   [clojure.lang.Compiler analyze Compiler.java 6806]
+;   [clojure.lang.Compiler access$300 Compiler.java 38]
+;   [clojure.lang.Compiler$LetExpr$Parser parse Compiler.java 6401]
+;   [clojure.lang.Compiler analyzeSeq Compiler.java 7124]
+;   [clojure.lang.Compiler analyze Compiler.java 6806]
+;   [clojure.lang.Compiler analyzeSeq Compiler.java 7112]
+;   [clojure.lang.Compiler analyze Compiler.java 6806]
+;   [clojure.lang.Compiler analyze Compiler.java 6762]
+;   [clojure.lang.Compiler$BodyExpr$Parser parse Compiler.java 6135]
+;   [clojure.lang.Compiler$FnMethod parse Compiler.java 5479]
+;   [clojure.lang.Compiler$FnExpr parse Compiler.java 4041]
+;   [clojure.lang.Compiler analyzeSeq Compiler.java 7122]
+;   [clojure.lang.Compiler analyze Compiler.java 6806]
+;   [clojure.lang.Compiler analyzeSeq Compiler.java 7112]
+;   [clojure.lang.Compiler analyze Compiler.java 6806]
+;   [clojure.lang.Compiler access$300 Compiler.java 38]
+;   [clojure.lang.Compiler$DefExpr$Parser parse Compiler.java 596]
+;   [clojure.lang.Compiler analyzeSeq Compiler.java 7124]
+;   [clojure.lang.Compiler analyze Compiler.java 6806]
+;   [clojure.lang.Compiler analyze Compiler.java 6762]
+;   [clojure.lang.Compiler eval Compiler.java 7198]
+;   [clojure.lang.Compiler load Compiler.java 7653]
+;   [clj_reload.util$ns_load_file invokeStatic util.clj 124]
+;   [clj_reload.util$ns_load_file invoke util.clj 121]
+;   [clj_reload.keep$ns_load_patched invokeStatic keep.clj 180]
+;   [clj_reload.keep$ns_load_patched invoke keep.clj 177]
+;   [clj_reload.core$ns_load invokeStatic core.clj 270]
+;   [clj_reload.core$ns_load invoke core.clj 265]
+;   [clj_reload.core$reload$fn__781 invoke core.clj 336]
+;   [clojure.core$some invokeStatic core.clj 2718]
+;   [clojure.core$some invoke core.clj 2709]
+;   [clj_reload.core$reload invokeStatic core.clj 336]
+;   [clj_reload.core$reload invoke core.clj 304]
+;   [clj_reload.core$reload invokeStatic core.clj 326]
+;   [clj_reload.core$reload invoke core.clj 304]
+;   [user$reload_namespaces invokeStatic user.clj 4]
+;   [user$reload_namespaces invoke user.clj 4]
+;   [dev$eval13133 invokeStatic NO_SOURCE_FILE 759]
+;   [dev$eval13133 invoke NO_SOURCE_FILE 759]
+;   [clojure.lang.Compiler eval Compiler.java 7194]
+;   [nrepl.middleware.interruptible_eval$evaluator$run__2131$fn__2142 invoke interruptible_eval.clj 106]
+;   [nrepl.middleware.interruptible_eval$evaluator$run__2131 invoke interruptible_eval.clj 101]
+;   [nrepl.middleware.session$session_exec$session_loop__2210 invoke session.clj 229]
+;   [nrepl.SessionThread run SessionThread.java 21]]}
+; Execution error at clj-reload.util/ns-load-file (util.clj:124).
+; No such var: json/-write-str
+clj꞉dev꞉> 
+
+clj꞉dev꞉> 
+
+clj꞉dev꞉> 
+
+clj꞉dev꞉> 
+
+clj꞉dev꞉> 
+; nREPL Connection was closed
+; Connecting using "deps.edn" project type.
+; You can make Calva auto-select this.
+;   - See https://calva.io/connect-sequences/
+; 
+
+; Connecting ...
+; Reading port file: file:///home/takudzwatembedza/sandwich-vote/.nrepl-port ...
+; Using host:port localhost:41129 ...
+; Hooking up nREPL sessions ...
+; Connected session: clj
+; Evaluating code from settings: 'calva.autoEvaluateCode.onConnect.clj'
+nil
+clj꞉user꞉> 
+nil
+clj꞉dev꞉> 
+#'dev/before-ns-unload
+clj꞉dev꞉> 
+#'dev/after-ns-reload
+clj꞉dev꞉> 
+#function[clojure.lang.AFunction/1]
+clj꞉dev꞉> 
+; Unloading dev
+; sup
+; Unloading sandwich-vote.server
+; Loading sandwich-vote.server
+; Loading dev
+; sup again
+{:unloaded [dev sandwich-vote.server], :loaded [sandwich-vote.server dev]}
+clj꞉dev꞉> 
+; nREPL Connection was closed
+; Connecting using "deps.edn" project type.
+; You can make Calva auto-select this.
+;   - See https://calva.io/connect-sequences/
+; 
+
+; Connecting ...
+; Reading port file: file:///home/takudzwatembedza/sandwich-vote/.nrepl-port ...
+; Using host:port localhost:39825 ...
+; Hooking up nREPL sessions ...
+; Connected session: clj
+; Evaluating code from settings: 'calva.autoEvaluateCode.onConnect.clj'
+nil
+clj꞉user꞉> 
+nil
+clj꞉dev꞉> 
+#'dev/before-ns-unload
+clj꞉dev꞉> 
+#'dev/after-ns-reload
+clj꞉dev꞉> 
+#function[clojure.lang.AFunction/1]
+clj꞉dev꞉> 
+; Nothing to unload
+; Nothing to reload
+{:unloaded [], :loaded []}
+clj꞉dev꞉> 
+; Unloading dev
+; sup
+; Unloading sandwich-vote.server
+; Loading sandwich-vote.server
+; Loading dev
+; sup again
+{:unloaded [dev sandwich-vote.server], :loaded [sandwich-vote.server dev]}
+clj꞉dev꞉> 
+; Unloading dev
+; sup
+; Unloading sandwich-vote.server
+; Loading sandwich-vote.server
+; Loading dev
+; sup again
+{:unloaded [dev sandwich-vote.server], :loaded [sandwich-vote.server dev]}
+clj꞉dev꞉> 
+; Unloading dev
+; sup
+; Unloading sandwich-vote.server
+; Loading sandwich-vote.server
+; Loading dev
+; sup again
+{:unloaded [dev sandwich-vote.server], :loaded [sandwich-vote.server dev]}
+clj꞉dev꞉> 
