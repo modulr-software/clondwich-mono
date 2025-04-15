@@ -1,4 +1,4 @@
-(ns sandwich-vote.server
+(ns clondwich.server
   (:require [org.httpkit.server :as http][clojure.data.json :as json]))
 
 (defonce server (atom nil))
