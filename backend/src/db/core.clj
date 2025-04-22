@@ -14,19 +14,17 @@
   (jdbc/execute! datasource
                  ["DROP TABLE IF EXISTS images"]))
 
-(defn insert-image[url]
+(defn insert-image [url] 
   (jdbc/execute! datasource
-                 ["INSERT INTO images (url) VALUE(?)"url]))
-
-;;stuffs for votes now
+                 ["INSERT INTO images (url) VALUES (?)" url]))
 
 (defn create-votes-table []
   (jdbc/execute! datasource
-                 ["CREATE TABLE IF NOT EXISTS votes(id INTEGER PRIMARY KEY,image_id ,vote BOOLEAN DEFAULT 1)"]))
+                 ["CREATE TABLE IF NOT EXISTS votes(id INTEGER PRIMARY KEY, image_id INTEGER, vote BOOLEAN DEFAULT 1)"]))
 
-(defn insert-vote [image_id vote]
+(defn insert-vote [image_id vote] 
   (jdbc/execute! datasource
-                 ["INSERT INTO votes (image_id, vote) VALUE(?,?)" image_id vote]))
+                 ["INSERT INTO votes (image_id, vote) VALUES (?, ?)" image_id vote]))
 
 (defn drop-votes-table []
   (jdbc/execute! datasource
@@ -35,16 +33,29 @@
 (defn get-images-by-vote-count []
   (jdbc/execute! datasource
                  ["SELECT images.id, images.url, COUNT(votes.image_id) AS vote_count
-      FROM images
-      LEFT JOIN votes ON images.id = votes.image_id
-      GROUP BY images.id
-      ORDER BY vote_count ASC"]))
+                   FROM images
+                   LEFT JOIN votes ON images.id = votes.image_id
+                   GROUP BY images.id
+                   ORDER BY vote_count ASC"]))
 
-(comment
+(comment 
   (create-images-table)
+  (create-votes-table)
   (drop-images-table)
-  (jdbc/execute! datasource
-                 ["SELECT * FROM sqlite_master"])
-  )
-  
+  (drop-votes-table)
 
+  ;; Insert and fetch test data:
+  (insert-image "http://example.com/sandwich1.jpg")
+  (insert-image "http://example.com/not-sandwich.jpg")
+
+  ;; Assuming ID 1 and 2 were created
+  (insert-vote 1 true)
+  (insert-vote 1 true)
+  (insert-vote 2 false)
+
+  ;; Check vote counts
+  (get-images-by-vote-count)
+
+  ;; Check DB structure
+  (jdbc/execute! datasource
+                 ["SELECT * FROM sqlite_master"]))
