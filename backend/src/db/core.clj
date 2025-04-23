@@ -6,6 +6,14 @@
 
 (def datasource (jdbc/get-datasource db-spec))
 
+(defn create-users-table []
+  (jdbc/execute! datasource
+                 ["CREATE TABLE IF NOT EXISTS users(id INTEGER PRIMARY KEY, email TEXT, username TEXT,password TEXT)"]))
+
+(defn drop-users-table []
+  (jdbc/execute! datasource
+                 ["DROP TABLE IF EXISTS users"]))
+
 (defn create-images-table []
   (jdbc/execute! datasource
                  ["CREATE TABLE IF NOT EXISTS images(id INTEGER PRIMARY KEY, url TEXT)"]))
@@ -22,9 +30,14 @@
   (jdbc/execute! datasource
                  ["CREATE TABLE IF NOT EXISTS votes(id INTEGER PRIMARY KEY, image_id INTEGER, vote BOOLEAN DEFAULT 1)"]))
 
-(defn insert-vote [image_id vote] 
-  (jdbc/execute! datasource
-                 ["INSERT INTO votes (image_id, vote) VALUES (?, ?)" image_id vote]))
+(defn insert-vote [image_id vote]
+  (jdbc/with-db-transaction [image_id vote datasource] 
+    (jdbc/execute! datasource
+                   ["INSERT INTO votes (image_id, vote) VALUES (?, ?)" image_id vote])
+    
+    (jdbc/execute! datasource
+                   ["UPDATE images SET total_votes = total_votes + 1 WHERE id = ?" image_id])))
+
 
 (defn drop-votes-table []
   (jdbc/execute! datasource
