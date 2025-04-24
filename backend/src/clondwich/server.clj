@@ -1,7 +1,8 @@
 (ns clondwich.server
   (:require [org.httpkit.server :as http] [clojure.data.json :as json]))
 
-(defonce server (atom nil))
+(defonce ^:private server (atom nil))
+
 
 (defn handler [req]
 
