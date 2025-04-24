@@ -8,7 +8,12 @@
 
 (defn create-users-table [datasource]
   (jdbc/execute! datasource
-                 ["CREATE TABLE IF NOT EXISTS users(id INTEGER PRIMARY KEY, email TEXT, username TEXT,password TEXT)"]))
+                 ["CREATE TABLE IF NOT EXISTS users (
+                     id INTEGER PRIMARY KEY AUTOINCREMENT,
+                     email TEXT NULL,
+                     username TEXT NOT NULL,
+                     password TEXT NULL)"]))
+
 
 (defn drop-users-table [datasource]
   (jdbc/execute! datasource
@@ -16,7 +21,8 @@
 
 (defn create-images-table [datasource]
   (jdbc/execute! datasource
-                 ["CREATE TABLE IF NOT EXISTS images(id INTEGER PRIMARY KEY, url TEXT)"]))
+                 ["CREATE TABLE IF NOT EXISTS images(id INTEGER PRIMARY KEY AUTOINCREMENT,
+                   url TEXT)"]))
 
 (defn drop-images-table [datasource]
   (jdbc/execute! datasource
@@ -28,7 +34,9 @@
 
 (defn create-votes-table [datasource]
   (jdbc/execute! datasource
-                 ["CREATE TABLE IF NOT EXISTS votes(id INTEGER PRIMARY KEY, image_id INTEGER, vote BOOLEAN DEFAULT 1)"]))
+                 ["CREATE TABLE IF NOT EXISTS votes(id INTEGER PRIMARY KEY AUTOINCREMENT,
+                   image_id INTEGER, 
+                   vote BOOLEAN DEFAULT 1)"]))
 
 (defn insert-vote [datasource image_id vote]
   (jdbc/with-db-transaction [image_id vote datasource] 
