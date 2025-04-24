@@ -1,9 +1,9 @@
 (ns clondwich.server
-  (:require [org.httpkit.server :as http][clojure.data.json :as json]))
+  (:require [org.httpkit.server :as http] [clojure.data.json :as json]))
 
 (defonce server (atom nil))
 
-(defn handler [req] 
+(defn handler [req]
 
   {:status 200
    :headers {"Content-Type" "text/plain"}
@@ -13,20 +13,27 @@
   (let [parsed-body (-> (:body req)
                         slurp
                         (json/read-str :key-fn keyword))
-        response    (handler (assoc req :body parsed-body))
-        ]
-    (println parsed-body)
-    (println (type (:body response)))
+        response    (handler (assoc req :body parsed-body))] 
     (assoc response
            :body (json/write-str (:body response))
-           :headers {"Content-Type" "application/json"})
-    ))
+           :headers {"Content-Type" "application/json"})))
 
+(defn wrap-json [handler]
+  (fn [req]
+    (let [parsed-body (-> (:body req)
+                          slurp
+                          (json/read-str :key-fn keyword))
+          response    (handler (assoc req :body parsed-body))]
+      (println parsed-body)
+      (println (type (:body response)))
+      (assoc response
+             :body (json/write-str (:body response))
+             :headers {"Content-Type" "application/json"}))))
 
 (defn start []
   (when (nil? @server)
 
-    (reset! server (http/run-server mw {:port 8080}))))
+    (reset! server (http/run-server (wrap-json handler) {:port 8080}))))
 
 (defn stop []
   (when-not (nil? @server)
@@ -42,23 +49,12 @@
   (start)
   (stop)
   (restart)
-  
+
   (let [stopTest (start)]
     (println @server)
-    (stopTest))
-  )
+    (stopTest)))
 
-(defn wrap-json [handler]
-  (fn [req]
-    (let [parsed-body (-> (:body req)
-                          slurp
-                          (json/read-str :key-fn keyword))
-          response    (handler (assoc req :body parsed-body))]
-      (println parsed-body)
-      (println (type (:body response)))
-      (assoc response
-             :body (json/write-str (:body response))
-             :headers {"Content-Type" "application/json"}))))
+
 
 
 ;;@server
