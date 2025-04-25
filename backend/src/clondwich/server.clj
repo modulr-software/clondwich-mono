@@ -1,5 +1,7 @@
 (ns clondwich.server
-  (:require [org.httpkit.server :as http] [clojure.data.json :as json]))
+  (:require [org.httpkit.server :as http] 
+            [clojure.data.json :as json]
+            [clondwich-mono.routes :as routes]))
 
 (defonce ^:private server (atom nil))
 
@@ -34,7 +36,7 @@
 (defn start []
   (when (nil? @server)
 
-    (reset! server (http/run-server (wrap-json handler) {:port 8080}))))
+    (reset! server (http/run-server (wrap-json routes/app-routes) {:port 8080}))))
 
 (defn stop []
   (when-not (nil? @server)
