@@ -64,6 +64,7 @@
   (create-votes-table datasource)
   (drop-images-table datasource)
   (drop-votes-table datasource)
+  (create-users-table datasource)
 
   ;; Insert and fetch test data:
   (insert-image "http://example.com/sandwich1.jpg")
