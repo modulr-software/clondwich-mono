@@ -32,20 +32,5 @@
         (response {:status "image-added"}))
       (response {:error "Missing or invalid URL"})))
 
-  ;; Admin routes (used for DB setup/teardown)
-  (POST "/admin/create-tables" []
-    (do
-      (db/create-users-table db/datasource)
-      (db/create-images-table db/datasource)
-      (db/create-votes-table db/datasource)
-      (response {:status "tables-created"})))
-
-  (POST "/admin/drop-tables" []
-    (do
-      (db/drop-users-table db/datasource)
-      (db/drop-images-table db/datasource)
-      (db/drop-votes-table db/datasource)
-      (response {:status "tables-dropped"})))
-
   ;; Catch-all for undefined routes
   (route/not-found "Not Found"))
