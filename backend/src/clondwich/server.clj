@@ -26,9 +26,7 @@
     (let [parsed-body (-> (:body req)
                           slurp
                           (json/read-str :key-fn keyword))
-          response    (handler (assoc req :body parsed-body))]
-      (println parsed-body)
-      (println (type (:body response)))
+          response    (handler (assoc req :body parsed-body))] 
       (assoc response
              :body (json/write-str (:body response))
              :headers {"Content-Type" "application/json"}))))
