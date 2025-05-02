@@ -1,6 +1,6 @@
 (ns clondwich.routes
   (:require
-   [compojure.core :refer [defroutes GET POST routes]]   ;; ✅ added routes
+   [compojure.core :refer [defroutes GET POST routes]]
    [compojure.route :as route]
    [ring.util.response :refer [response]]
    [clojure.string :as str]
@@ -9,17 +9,17 @@
   (:import [java.util UUID]))
 
 
-;; In-memory session store: token → user-id
-(defonce session-store (atom {}))
 
 ;; Authentication middleware
 (defn wrap-auth [handler]
   (fn [req]
-    (let [token (get-in req [:headers "authorization"])
-          user-id (@session-store token)]
-      (if user-id
-        (handler (assoc req :user-id user-id))
+    (let [token (some-> (get-in req [:headers "authorization"])
+                        (str/replace #"^Bearer " ""))
+          user (jwt/verify-token token)]
+      (if user
+        (handler (assoc req :user user)) ; attach whole user map
         (response {:error "Unauthorized"})))))
+
 
 (defroutes app-routes
 
@@ -32,22 +32,31 @@
       (if (and username password)
         (do
           (db/create-user! username password email)
-          (response {:status "user-created"}))
+          (let [user (db/find-user username)
+                payload {:id (:users/id user)
+                         :username (:users/username user)
+                         :role (:users/role user)}
+                token (jwt/generate-token payload)]
+            (response {:status "user-created" :token token})))
         (response {:error "Missing username or password"}))
       (catch Exception e
         (response {:error (.getMessage e)}))))
+
 
   ;; Login
   (POST "/login" [username password]
     (try
       (let [user (db/find-user username)]
         (if (and user (db/check-password password (:users/password user)))
-          (let [token (str (UUID/randomUUID))]
-            (swap! session-store assoc token (:users/id user))
+          (let [payload {:id (:users/id user)
+                         :username (:users/username user)
+                         :role (:users/role user)} ; include more fields if needed
+                token (jwt/generate-token payload)]
             (response {:token token}))
           (response {:error "Invalid credentials"})))
       (catch Exception e
         (response {:error "Login failed"}))))
+
 
   ;; Authenticated routes
   (wrap-auth
