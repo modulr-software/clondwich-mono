@@ -23,15 +23,18 @@
 
 (defn wrap-json [handler]
   (fn [req]
-    (let [parsed-body (-> (:body req)
-                          slurp
-                          (json/read-str :key-fn keyword))
-          response    (handler (assoc req :body parsed-body))]
-      (println parsed-body)
-      (println (type (:body response)))
+    (let [parsed-body (try
+                        (when-let [body (:body req)]
+                          (json/read-str (slurp body) :key-fn keyword))
+                        (catch Exception _ nil))
+          request-with-body (if parsed-body
+                              (assoc req :body parsed-body)
+                              req)
+          response (handler request-with-body)]
       (assoc response
              :body (json/write-str (:body response))
              :headers {"Content-Type" "application/json"}))))
+
 
 (defn start []
   (when (nil? @server)
