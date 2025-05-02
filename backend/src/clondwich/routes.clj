@@ -4,7 +4,8 @@
    [compojure.route :as route]
    [ring.util.response :refer [response]]
    [clojure.string :as str]
-   [db.core :as db])
+   [db.core :as db]
+   [auth.jwt :as jwt])
   (:import [java.util UUID]))
 
 
