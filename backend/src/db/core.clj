@@ -11,7 +11,7 @@
 ;; --- TABLE CREATION ---
 (defn create-users-table [ds]
   (jdbc/execute! ds
-                 ["CREATE TABLE IF NOT EXISTS users (
+     ["CREATE TABLE IF NOT EXISTS users (
        id INTEGER PRIMARY KEY AUTOINCREMENT,
        email TEXT NULL,
        role TEXT NOT NULL,
