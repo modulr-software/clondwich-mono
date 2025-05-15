@@ -1,10 +1,9 @@
 (ns clondwich.server
-  (:require [org.httpkit.server :as http] 
+  (:require [org.httpkit.server :as http]
             [clojure.data.json :as json]
-            [clondwich-mono.routes :as routes]))
+            [clondwich.routes :as routes]))
 
 (defonce ^:private server (atom nil))
-
 
 (defn handler [req]
 
@@ -16,7 +15,7 @@
   (let [parsed-body (-> (:body req)
                         slurp
                         (json/read-str :key-fn keyword))
-        response    (handler (assoc req :body parsed-body))] 
+        response    (handler (assoc req :body parsed-body))]
     (assoc response
            :body (json/write-str (:body response))
            :headers {"Content-Type" "application/json"})))
@@ -34,7 +33,6 @@
       (assoc response
              :body (json/write-str (:body response))
              :headers {"Content-Type" "application/json"}))))
-
 
 (defn start []
   (when (nil? @server)
@@ -59,9 +57,6 @@
   (let [stopTest (start)]
     (println @server)
     (stopTest)))
-
-
-
 
 ;;@server
 

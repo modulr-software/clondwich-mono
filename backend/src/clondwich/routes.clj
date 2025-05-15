@@ -8,8 +8,6 @@
    [auth.jwt :as jwt])
   (:import [java.util UUID]))
 
-
-
 ;; Authentication middleware
 (defn wrap-auth [handler]
   (fn [req]
@@ -20,11 +18,10 @@
         (handler (assoc req :user user)) ; attach whole user map
         (response {:error "Unauthorized"})))))
 
-
 (defroutes app-routes
 
   ;; Welcome route
-  (GET "/" [] (response "Welcome to the Clondwich App!"))
+  (GET "/" [] {:status 200 :body "henlo" :headers {"Content-Type" "application/json"}})
 
   ;; Register new user
   (POST "/register" [username password email]
@@ -42,8 +39,7 @@
       (catch Exception e
         (response {:error (.getMessage e)}))))
 
-
-  ;; Login
+;; Login
   (POST "/login" [username password]
     (try
       (let [user (db/find-user username)]
@@ -57,8 +53,7 @@
       (catch Exception e
         (response {:error "Login failed"}))))
 
-
-  ;; Authenticated routes
+;; Authenticated routes
   (wrap-auth
    (routes
 
