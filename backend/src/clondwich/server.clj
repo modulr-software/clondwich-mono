@@ -1,7 +1,8 @@
 (ns clondwich.server
   (:require [org.httpkit.server :as http]
             [clojure.data.json :as json]
-            [clondwich.routes :as routes]))
+            [clondwich.routes :as routes]
+            [clondwich.environment :as env]))
 
 (defonce ^:private server (atom nil))
 
@@ -34,10 +35,11 @@
              :body (json/write-str (:body response))
              :headers {"Content-Type" "application/json"}))))
 
+
 (defn start []
   (when (nil? @server)
 
-    (reset! server (http/run-server (wrap-json routes/app-routes) {:port 8080}))))
+    (reset! server (http/run-server (wrap-json routes/app-routes) {:port (env/read :port)}))))
 
 (defn stop []
   (when-not (nil? @server)
@@ -48,6 +50,7 @@
 (defn restart []
   (stop)
   (start))
+
 
 (comment
   (start)

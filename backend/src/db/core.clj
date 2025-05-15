@@ -1,10 +1,11 @@
 (ns db.core
   (:require
    [next.jdbc :as jdbc]
-   [buddy.hashers :as hashers]))
+   [buddy.hashers :as hashers]
+   [clondwich.environment :as env]))
 
 (def db-spec {:dbtype "sqlite"
-              :dbname "clond.db"})
+              :dbname (env/read :db)})
 
 (def datasource (jdbc/get-datasource db-spec))
 
@@ -20,13 +21,13 @@
 
 (defn create-images-table [ds]
   (jdbc/execute! ds
-                 ["CREATE TABLE IF NOT EXISTS images (
+     ["CREATE TABLE IF NOT EXISTS images (
        id INTEGER PRIMARY KEY AUTOINCREMENT,
        url TEXT)"]))
 
 (defn create-votes-table [ds]
   (jdbc/execute! ds
-                 ["CREATE TABLE IF NOT EXISTS votes (
+     ["CREATE TABLE IF NOT EXISTS votes (
        id INTEGER PRIMARY KEY AUTOINCREMENT,
        image_id INTEGER,
        vote BOOLEAN DEFAULT 1)"]))
@@ -52,7 +53,7 @@
 
 (defn get-images-by-vote-count [ds]
   (jdbc/execute! ds
-                 ["SELECT images.id, images.url, COUNT(votes.image_id) AS vote_count
+    ["SELECT images.id, images.url, COUNT(votes.image_id) AS vote_count
       FROM images
       LEFT JOIN votes ON images.id = votes.image_id
       GROUP BY images.id
