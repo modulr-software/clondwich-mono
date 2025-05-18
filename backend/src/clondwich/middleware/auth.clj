@@ -3,8 +3,6 @@
             [clojure.string :as str]
             [clojure.data.json :as json]))
 
-(def secret "your-secret-key") ; use env vars in prod
-
 (defn decode-jwt [token]
   ;; Replace with real decoding (e.g. buddy-sign or manually decode)
   ;; For now assume payload is base64 json in middle part

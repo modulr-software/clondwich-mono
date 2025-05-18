@@ -60,11 +60,11 @@
       ORDER BY vote_count ASC"]))
 
 ;; --- USER AUTHENTICATION ---
-(defn create-user! [username password email]
+(defn create-user! [username password email role]
   (let [hashed (hashers/derive password)]
     (jdbc/execute! datasource
-                   ["INSERT INTO users (username, password, email) VALUES (?, ?, ?)"
-                    username hashed email])))
+                   ["INSERT INTO users (username, password, email, role) VALUES (?, ?, ?, ?)"
+                    username hashed email role])))
 
 (defn find-user [username]
   (jdbc/execute-one! datasource
@@ -83,7 +83,7 @@
   (drop-images-table datasource)
   (drop-votes-table datasource)
 
-  (create-user! "admin" "password123" "admin@example.com")
+  (create-user! "admin" "password123" "admin@example.com" "user")
   (find-user "admin")
   (check-password "password123" (:password (find-user "admin")))
 

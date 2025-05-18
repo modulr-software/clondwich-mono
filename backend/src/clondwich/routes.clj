@@ -8,6 +8,7 @@
    [auth.jwt :as jwt])
   (:import [java.util UUID]))
 
+
 ;; Authentication middleware
 (defn wrap-auth [handler]
   (fn [req]
@@ -24,25 +25,34 @@
   (GET "/" [] {:status 200 :body "henlo" :headers {"Content-Type" "application/json"}})
 
   ;; Register new user
-  (POST "/register" [username password email]
+  (POST "/register" req []
     (try
-      (if (and username password)
-        (do
-          (db/create-user! username password email)
-          (let [user (db/find-user username)
-                payload {:id (:users/id user)
-                         :username (:users/username user)
-                         :role (:users/role user)}
-                token (jwt/generate-token payload)]
-            (response {:status "user-created" :token token})))
-        (response {:error "Missing username or password"}))
+      (let [{
+             username :username
+             password :password
+             email :email} (:body req)]
+        (let [user (db/find-user username)]
+          (when user 
+            (response {:error (str "A user with the username '" username "' already exists")})))
+        (if (and username password)
+          (do
+            (db/create-user! username password email "user")
+            (let [user (db/find-user username)
+                  payload {:id (:users/id user)
+                           :username (:users/username user)
+                           :role (:users/role user)}
+                  token (jwt/generate-token payload)]
+              (response {:status "user-created" :token token})))
+          (response {:error "Missing username or password"})))
       (catch Exception e
         (response {:error (.getMessage e)}))))
 
 ;; Login
-  (POST "/login" [username password]
+  (POST "/login" req []
     (try
-      (let [user (db/find-user username)]
+      (let [{username :username 
+             password :password} (:body req) 
+            user (db/find-user username)]
         (if (and user (db/check-password password (:users/password user)))
           (let [payload {:id (:users/id user)
                          :username (:users/username user)

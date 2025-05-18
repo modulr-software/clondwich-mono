@@ -38,7 +38,6 @@
 
 (defn start []
   (when (nil? @server)
-
     (reset! server (http/run-server (wrap-json routes/app-routes) {:port (env/read :port)}))))
 
 (defn stop []
