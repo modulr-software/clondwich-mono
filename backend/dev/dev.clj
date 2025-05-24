@@ -1,6 +1,5 @@
 (ns dev 
-  (:require [sandwich-vote.server :as server]))
-
+  (:require [clondwich.server :as server]))
 
 (defn before-ns-unload []
   (println "sup"))
@@ -8,9 +7,8 @@
 (defn after-ns-reload []
   (println "sup again")
   (server/restart))
-
 (comment
+  (server/running?)
   (server/start)
-  (server/restart)
-  )
+  (server/restart))
 

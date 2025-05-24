@@ -1,36 +1,61 @@
 (ns clondwich.routes
   (:require
-   [compojure.core :refer [defroutes GET POST]]
+   [compojure.core :refer [defroutes GET POST routes]]
    [compojure.route :as route]
-   [ring.util.response :refer [response]]
-   [ring.util.request :as req]
-   [db.core :as db]))
+   [ring.util.response :as res]
+   [clojure.string :as str]
+   [clondwich.db :as db]
+   [clondwich.jwt :as jwt]
+   [clondwich.environment :as env]))
+
 
 (defroutes app-routes
+
   ;; Welcome route
-  (GET "/" [] (response "Welcome to the Clondwich App!"))
+  (GET "/" [] {:status 200 :body "henlo" :headers {"Content-Type" "application/json"}})
 
-  ;; Return images ordered by vote count
-  (GET "/images" []
-    (response (db/get-images-by-vote-count db/datasource)))
-
-  ;; Cast a vote on an image
-  (POST "/vote" [image_id vote]
+  ;; Register new user
+  (POST "/register" req []
     (try
-      (let [image-id (Integer/parseInt image_id)
-            vote-bool (= vote "true")]
-        (db/insert-vote db/datasource image-id vote-bool)
-        (response {:status "vote-recorded"}))
+      (let [{
+             username :username
+             password :password
+             email :email} (:body req)
+            user (db/find-user username)]
+        (if (and username password (nil? user))
+          (do
+            (db/create-user! username password email "user")
+            (let [user (db/find-user username)
+                  payload {:id (:users/id user)
+                           :username (:users/username user)
+                           :role (:users/role user)}
+                  token (jwt/generate-token payload)]
+              (res/response {:status "user-created" :token token})))
+          (-> (res/response {:error (if (some? user) 
+                                      (str "User with the username " username " already exists.") 
+                                      "Missing username or password.")})
+              (res/status 400))))
       (catch Exception e
-        (response {:error "Invalid input"}))))
+        (res/response {:error (.getMessage e)}))))
 
-  ;; Insert a new image
-  (POST "/image" [url]
-    (if (and url (not (clojure.string/blank? url)))
-      (do
-        (db/insert-image url)
-        (response {:status "image-added"}))
-      (response {:error "Missing or invalid URL"})))
+;; Login
+  (POST "/login" req []
+    (try
+      (println (env/read :db))
+      (let [{username :username 
+             password :password} (:body req) 
+            user (db/find-user username)]
+        (if (and user (db/check-password password (:users/password user)))
+          (let [payload {:id (:users/id user)
+                         :username (:users/username user)
+                         :role (:users/role user)} ; include more fields if needed
+                token (jwt/generate-token payload)]
+            (res/response {:token token}))
+          (-> (res/response {:error "Invalid credentials"})
+              (res/status 401))))
+      (catch Exception e
+        (-> (res/response {:error (str "An error occurred: " e)})
+            (res/status 500))))))
 
-  ;; Catch-all for undefined routes
-  (route/not-found "Not Found"))
+(comment 
+  (db/find-user "toast"))

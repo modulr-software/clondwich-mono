@@ -1,0 +1,3 @@
+{:port #long #or [#env PORT 8080]
+ :db #or [#env DATABASE "clond"]
+ :secret #env SECRET}
