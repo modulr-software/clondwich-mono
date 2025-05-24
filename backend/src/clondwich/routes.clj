@@ -2,22 +2,12 @@
   (:require
    [compojure.core :refer [defroutes GET POST routes]]
    [compojure.route :as route]
-   [ring.util.response :refer [response]]
+   [ring.util.response :as res]
    [clojure.string :as str]
-   [db.core :as db]
-   [auth.jwt :as jwt])
-  (:import [java.util UUID]))
+   [clondwich.db :as db]
+   [clondwich.jwt :as jwt]
+   [clondwich.environment :as env]))
 
-
-;; Authentication middleware
-(defn wrap-auth [handler]
-  (fn [req]
-    (let [token (some-> (get-in req [:headers "authorization"])
-                        (str/replace #"^Bearer " ""))
-          user (jwt/verify-token token)]
-      (if user
-        (handler (assoc req :user user)) ; attach whole user map
-        (response {:error "Unauthorized"})))))
 
 (defroutes app-routes
 
@@ -30,11 +20,9 @@
       (let [{
              username :username
              password :password
-             email :email} (:body req)]
-        (let [user (db/find-user username)]
-          (when user 
-            (response {:error (str "A user with the username '" username "' already exists")})))
-        (if (and username password)
+             email :email} (:body req)
+            user (db/find-user username)]
+        (if (and username password (nil? user))
           (do
             (db/create-user! username password email "user")
             (let [user (db/find-user username)
@@ -42,14 +30,18 @@
                            :username (:users/username user)
                            :role (:users/role user)}
                   token (jwt/generate-token payload)]
-              (response {:status "user-created" :token token})))
-          (response {:error "Missing username or password"})))
+              (res/response {:status "user-created" :token token})))
+          (-> (res/response {:error (if (some? user) 
+                                      (str "User with the username " username " already exists.") 
+                                      "Missing username or password.")})
+              (res/status 400))))
       (catch Exception e
-        (response {:error (.getMessage e)}))))
+        (res/response {:error (.getMessage e)}))))
 
 ;; Login
   (POST "/login" req []
     (try
+      (println (env/read :db))
       (let [{username :username 
              password :password} (:body req) 
             user (db/find-user username)]
@@ -58,36 +50,12 @@
                          :username (:users/username user)
                          :role (:users/role user)} ; include more fields if needed
                 token (jwt/generate-token payload)]
-            (response {:token token}))
-          (response {:error "Invalid credentials"})))
+            (res/response {:token token}))
+          (-> (res/response {:error "Invalid credentials"})
+              (res/status 401))))
       (catch Exception e
-        (response {:error "Login failed"}))))
+        (-> (res/response {:error (str "An error occurred: " e)})
+            (res/status 500))))))
 
-;; Authenticated routes
-  (wrap-auth
-   (routes
-
-    ;; Return images ordered by vote count
-    (GET "/images" []
-      (response (db/get-images-by-vote-count db/datasource)))
-
-    ;; Cast a vote on an image
-    (POST "/vote" [image_id vote]
-      (try
-        (let [image-id (Integer/parseInt image_id)
-              vote-bool (= vote "true")]
-          (db/insert-vote db/datasource image-id vote-bool)
-          (response {:status "vote-recorded"}))
-        (catch Exception e
-          (response {:error "Invalid input"}))))
-
-    ;; Insert a new image
-    (POST "/image" [url]
-      (if (and url (not (str/blank? url)))
-        (do
-          (db/insert-image url)
-          (response {:status "image-added"}))
-        (response {:error "Missing or invalid URL"})))))
-
-  ;; Catch-all for undefined routes
-  (route/not-found "Not Found"))
+(comment 
+  (db/find-user "toast"))

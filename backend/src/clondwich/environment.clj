@@ -1,9 +1,9 @@
 (ns clondwich.environment
   (:require [aero.core :refer [read-config]]))
 
-(defn read [key]
+(defn read [& keys]
   (let [vars (read-config "config.edn")]
-    (vars key)))
+    (get-in vars (vec keys))))
 
 (comment
   (read :port)

@@ -1,9 +1,7 @@
-(ns auth.jwt
+(ns clondwich.jwt
   (:require [buddy.sign.jwt :as jwt]
             [buddy.core.keys :as keys]
             [clondwich.environment :as env]))
-
-(def secret "super-secret-key") 
 
 (defn generate-token [user]
   (jwt/sign {:id (:id user)

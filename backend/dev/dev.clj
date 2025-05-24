@@ -8,6 +8,7 @@
   (println "sup again")
   (server/restart))
 (comment
+  (server/running?)
   (server/start)
   (server/restart))
 

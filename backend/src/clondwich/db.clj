@@ -1,4 +1,4 @@
-(ns db.core
+(ns clondwich.db
   (:require
    [next.jdbc :as jdbc]
    [buddy.hashers :as hashers]
